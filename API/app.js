@@ -3,12 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport = require('passport');
+const session = require('express-session');
+require('./auth/auth')(passport)
+
 
 var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/usuarios');
 var painelRouter = require('./routes/painel');
-var esqueciRouter = require('./routes/esqueci')
-var produtosRouter = require('./routes/produtos')
+var esqueciRouter = require('./routes/esqueci');
+var produtosRouter = require('./routes/produtos');
+
+
+authenticationMiddleware = (req, res, next) => {
+  if (req.isAuthenticated()) return next();
+  res.redirect('/');
+}
 
 var app = express();
 
@@ -21,6 +31,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: process.env.SECRET || '123',
+  resave:false,
+  saveUninitialized:false,
+  cookie:{maxAge: 50 * 60 * 1000}
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
