@@ -38,4 +38,10 @@ router.post('/add', (req, res, next) => {
   
 })
 
+router.get('/delete/:id', (req, res, next) => {   
+  Usuario.destroy({where:{id:req.params.id}}).then(() => {
+    res.redirect('/usuarios')
+  }).catch((err) => {console.log(err)})
+})
+
 module.exports = router;
