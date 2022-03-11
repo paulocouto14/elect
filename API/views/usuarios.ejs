@@ -7,24 +7,30 @@
   </head>
   <body>
     <header class="toolbar toolbar-header">
-      <h1 class="title">painel</h1>
+      <h1 class="title">Usuarios Cadastrados</h1>
     </header>    
     <section>
       <div>
         <table class="table-striped">
           <thead>
             <tr>
+              <th>ID</th>
               <th>Nome</th>
               <th>E-mail</th>
               <th>Telefone</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>nome completo</td>
-              <td>email completo</td>
-              <td>telefone</td>
-            </tr>
+            <% todos.forEach((lista)=>{  %>
+              <tr>
+                <td><%= lista.id %></td>              
+                <td><%= lista.nome %></td>
+                <td><%= lista.email %></td>
+                <td><%= lista.telefone %></td>
+                <td><button onClick="pegarid(()=>{console.log(todos)})" class="btn btn-mini btn-negative">Apagar</button></td>
+              </tr>
+            <%}) %>
           </tbody>
         </table>
       </div>
@@ -43,5 +49,12 @@
         </a>
       </div>
     </footer>
+    <script>
+      var pegarid = (e) => {
+      
+
+      }
+
+    </script>
   </body>
 </html>

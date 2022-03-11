@@ -6,7 +6,12 @@ const Usuario = require('../database/usuario')
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
-  res.render('usuarios');
+  Usuario.findAll().then((todos) => {
+    res.render('usuarios', {
+      todos:todos
+    });
+  }).catch((erro) => {res.send(erro)})
+  
 });
 
 router.get('/admin', (req, res, next) => {
@@ -25,8 +30,12 @@ router.post('/add', (req, res, next) => {
     console.log('Email:'+req.body.email)
     console.log('Senha:'+senhaParaSalvar)
     console.log('Tel:'+req.body.telefone)
-  }).catch((err) => console.log('error: '+ err))  
-  res.redirect('/usuarios')
+    res.redirect('/usuarios')
+  }).catch((err) => {
+    console.log('error: '+ err)
+    res.redirect('/painel')
+  })  
+  
 })
 
 module.exports = router;
