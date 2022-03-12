@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/photon.min.css' />
+    <link rel='stylesheet' href='/stylesheets/photon.css' />
+    <script src="/javascripts/buscacep.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <header class="toolbar toolbar-header">
+      <h1 class="title">Todos os Produtos</h1>
+      
+        <div class="toolbar-actions">
+          <a href="/painel">
+            <button class="btn btn-default">
+            Menu
+            </button>
+          </a>
+    </header>
+    <section>
+      <div id="formulario">
+        <form action="/clientes/add" method="post">
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Qual seu Nome?">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Qual seu Email?">
+          </div>
+          <div class="form-group">
+            <label>Telefone</label>
+            <input type="tel" class="form-control" id="telefone" name="telefone" maxlength="15" placeholder="Qual seu telefone? DDD-9999-9999">
+          </div>
+          <div class="form-group">
+            <label>Cep:</label>
+            <input name="cep" class="form-control" type="text" id="cep" value="" size="10" maxlength="9" placeholder="cep:59000-000" onblur="pesquisacep(this.value);" /><br />
+          </div>              
+          <div class="form-group">
+            <label>Rua:</label>
+            <input name="rua" id="rua" class="form-control" type="text" id="rua" size="60" /><br />
+          </div>
+          <div class="form-group">
+            <label>Numero:</label>
+              <input class="form-control" type="text"  size="4" /></label><br />
+          </div>
+          <div class="form-group">
+            <label>Bairro:</label>
+            <input name="bairro" class="form-control" type="text" id="bairro" size="40" /><br />
+          </div>
+          <div class="form-group">
+            <label>Cidade:</label>
+            <input name="cidade" class="form-control" type="text" id="cidade" size="40" /><br />
+          </div>             
+          <div class="form-group">
+            <label>Estado:</label>
+            <input name="uf" class="form-control" type="text" id="uf" size="2" /><br />
+          </div>
+          <button class="btn btn-large btn-primary">Adicionar</button>         
+        </form>
+      </div>
+    </section>
+    <footer class="toolbar toolbar-footer">      
+      <a href="/clientes">
+        <button class="btn btn-default">
+        Voltar
+        </button>
+      </a>      
+    </footer>
+    <script>
+      function mascara(o,f){
+        v_obj=o
+        v_fun=f
+        setTimeout("execmascara()",1)
+      }
+      function execmascara(){
+        v_obj.value=v_fun(v_obj.value)
+      }
+      function mtel(v){
+        v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+        v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+        v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+        return v;
+      }
+      function id( el ){
+	      return document.getElementById( el );
+      }
+      window.onload = function(){
+	      id('telefone').onkeyup = function(){
+		      mascara( this, mtel );
+    	  }
+      }
+    </script>
+  </body>
+</html>

@@ -13,6 +13,7 @@ var usuariosRouter = require('./routes/usuarios');
 var painelRouter = require('./routes/painel');
 var esqueciRouter = require('./routes/esqueci');
 var produtosRouter = require('./routes/produtos');
+var clientesRouter = require('./routes/clientes');
 
 
 authenticationMiddleware = (req, res, next) => {
@@ -44,6 +45,7 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
+app.use('/clientes', clientesRouter);
 app.use('/painel', painelRouter);
 app.use('/esqueci', esqueciRouter);
 app.use('/produtos', produtosRouter);
