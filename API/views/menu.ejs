@@ -3,7 +3,6 @@
   <head>
     <link rel='stylesheet' href='/stylesheets/photon.min.css' />
     <link rel='stylesheet' href='/stylesheets/photon.css' />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>    
     <div class="window">
@@ -31,9 +30,8 @@
             <span class="icon icon-home icon-text"></span>
             Filters
           </button>
-          <button onclick="novocliente()" class="btn btn-primary pull-right js-popover-trigger">
-            <span class="icon icon-user-add"></span>
-            Novo Cliente
+          <button class="btn btn-default btn-dropdown pull-right js-popover-trigger">
+            <span class="icon icon-megaphone"></span>
           </button>
         </div>
       </header>
@@ -42,14 +40,14 @@
           <div class="pane pane-sm sidebar">
             <nav class="nav-group">
               <h5 class="nav-group-title">Favorites</h5>
-              <a href="/menu" class="nav-group-item">
+              <a href="/menu" class="nav-group-item active">
                 <span class="icon icon-home"></span>
                 Menu
               </a>
-              <span class="nav-group-item active">
-                <span class="icon icon-light-up"></span>
+              <a href="/clientes" class="nav-group-item">
+                <span href="/clientes" class="icon icon-light-up"></span>
                 Clientes
-              </span>
+              </a>
               <a href="/produtos" class="nav-group-item">
                 <span class="icon icon-download"></span>
                 Produtos
@@ -114,44 +112,126 @@
             <table class="table-striped">
               <thead>
                 <tr>
-                  <th>Nome</th>
-                  <th>E-mail</th>
-                  <th>telefone</th>
-                  <th></th>
+                  <th>Name</th>
+                  <th>Kind</th>
+                  <th>Date Modified</th>
+                  <th>Author</th>
                 </tr>
               </thead>
               <tbody>
-                <% todos.forEach((lista)=>{  %>
-                  <tr>
-                    <td><%= lista.nome %></td>              
-                    <td><%= lista.email %></td>
-                    <td><%= lista.telefone %></td>
-                    <td><a href="/clientes/delete/<%= lista.id %>"><button class="btn btn-mini btn-negative">Apagar</button></a></td>
-                  </tr>
-                <%}) %>
+                <tr>
+                  <td>bars.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>base.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>button-groups.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>buttons.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>docs.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>forms.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>grid.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>icons.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>images.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>lists.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>mixins.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>navs.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>normalize.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>photon.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>tables.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>tabs.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>utilities.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
+                <tr>
+                  <td>variables.scss</td>
+                  <td>Document</td>
+                  <td>Oct 13, 2015</td>
+                  <td>connors</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
-    <script>
-      var novocliente = () => {
-        nome = prompt('qual nome do cliente')
-        email = prompt('Qual o email do Cliente?')
-        telefone = prompt('Qual o telefone do Cliente?')
-        cep = prompt('Qual o cep do Cliente?')
-        numero = prompt('Qual o numero da casa do Cliente?')
-        axios.post('/clientes/add', {
-          nome:nome,
-          email:email,
-          telefone:telefone,
-          cep:cep,
-          numero:numero
-        }).then(() => {
-          window.location.href = '/clientes'
-        })
-      }
-    </script>    
   </body>
 </html>

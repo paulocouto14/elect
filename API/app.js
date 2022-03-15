@@ -9,11 +9,9 @@ require('./auth/auth')(passport)
 
 
 var indexRouter = require('./routes/index');
-var usuariosRouter = require('./routes/usuarios');
-var painelRouter = require('./routes/painel');
-var esqueciRouter = require('./routes/esqueci');
-var produtosRouter = require('./routes/produtos');
 var clientesRouter = require('./routes/clientes');
+var menuRouter = require('./routes/menu');
+var produtosRouter = require('./routes/produtos');
 
 
 authenticationMiddleware = (req, res, next) => {
@@ -37,17 +35,15 @@ app.use(session({
   secret: process.env.SECRET || '123',
   resave:false,
   saveUninitialized:false,
-  cookie:{maxAge: 50 * 60 * 1000}
+  cookie:{ maxAge: 50 * 60 * 1000 }
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
-app.use('/usuarios', usuariosRouter);
 app.use('/clientes', clientesRouter);
-app.use('/painel', painelRouter);
-app.use('/esqueci', esqueciRouter);
+app.use('/menu', menuRouter);
 app.use('/produtos', produtosRouter);
 
 // catch 404 and forward to error handler
