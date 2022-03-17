@@ -10,12 +10,16 @@ router.get('/', (req, res, next) => {
   Produtos.findAll().then((todos) => {
     res.render('produtos', {
       title:'Produtos',
+      todos:todos
       
     })
   }).catch((erro) => {res.send(erro)});
   
 });
 
+router.get('/add', (req, res, next) => {
+  res.render('formularioProdutos')
+})
 
 
 router.post('/add', (req, res, next) => {
@@ -31,6 +35,7 @@ router.post('/add', (req, res, next) => {
     res.redirect('/produtos')
   }).catch(() => {
     console.log('erro ao cadastra cliente:')
+    res.redirect('menu')
   });
 
 })
@@ -39,7 +44,7 @@ router.post('/add', (req, res, next) => {
 
 router.get('/delete/:id', (req, res, next) => {   
   
-  Cliente.destroy({ where:{ id:req.params.id }}).then(() => {
+  Cliente.destroy({ where: { id:req.params.id }}).then(() => {
     res.redirect('/clientes')
   }).catch((err) => { console.log(err) });
 

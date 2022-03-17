@@ -3,7 +3,6 @@
   <head>
     <link rel='stylesheet' href='/stylesheets/photon.min.css' />
     <link rel='stylesheet' href='/stylesheets/photon.css' />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>    
     <div class="window">
@@ -31,7 +30,7 @@
             <span class="icon icon-home icon-text"></span>
             Filters
           </button>
-          <button onclick="novocliente()" class="btn btn-primary pull-right js-popover-trigger">
+          <button onclick="novoCliente()" class="btn btn-primary pull-right js-popover-trigger">
             <span class="icon icon-user-add"></span>
             Novo Cliente
           </button>
@@ -136,22 +135,10 @@
       </div>
     </div>
     <script>
-      var novocliente = () => {
-        nome = prompt('qual nome do cliente')
-        email = prompt('Qual o email do Cliente?')
-        telefone = prompt('Qual o telefone do Cliente?')
-        cep = prompt('Qual o cep do Cliente?')
-        numero = prompt('Qual o numero da casa do Cliente?')
-        axios.post('/clientes/add', {
-          nome:nome,
-          email:email,
-          telefone:telefone,
-          cep:cep,
-          numero:numero
-        }).then(() => {
-          window.location.href = '/clientes'
-        })
+      var novoCliente = () => {
+        window.open('/clientes/add', 'pagina', "left=400,top=150,width=320,height=450")
       }
-    </script>    
+    </script>
+    <meta http-equiv="refresh" content="180">    
   </body>
 </html>

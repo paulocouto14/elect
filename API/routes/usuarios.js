@@ -6,6 +6,7 @@ const Usuario = require('../database/usuario')
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
+
   Usuario.findAll().then((todos) => {
     res.render('usuarios', {
       todos:todos
@@ -19,7 +20,9 @@ router.get('/admin', (req, res, next) => {
 });
 
 router.post('/add', (req, res, next) => {
+  
   let senhaParaSalvar = bcrypt.hashSync(req.body.senha, salt)
+
   Usuario.create({
     nome:req.body.usuario,
     email:req.body.email,
@@ -39,9 +42,11 @@ router.post('/add', (req, res, next) => {
 })
 
 router.get('/delete/:id', (req, res, next) => {   
+
   Usuario.destroy({where:{id:req.params.id}}).then(() => {
     res.redirect('/usuarios')
-  }).catch((err) => {console.log(err)})
+  }).catch((err) => { console.log(err) })
+
 })
 
 module.exports = router;

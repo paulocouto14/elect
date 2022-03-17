@@ -4,7 +4,7 @@ var Cliente = require('../database/clientes')
 
 
 
-/* GET users listing. */
+
 router.get('/', (req, res, next) => {
 
   Cliente.findAll().then((todos) => {
@@ -16,9 +16,13 @@ router.get('/', (req, res, next) => {
   
 });
 
+router.get('/add', (req, res, next) => {
+  res.render('formularioClientes')
+})
 
 
-router.post('/add', (req, res, next) => {
+
+router.post('/add', (req, res, next) => {  
   
   Cliente.create({
     nome:req.body.nome,
@@ -28,6 +32,7 @@ router.post('/add', (req, res, next) => {
     numero:req.body.numero
   }).then(() => {
     console.log('novo cliente cadastrado')
+    res.end('<script>window.close()</script>')
     res.redirect('/clientes')
   }).catch(() => {
     console.log('erro ao cadastra cliente:')
