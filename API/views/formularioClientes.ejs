@@ -30,21 +30,21 @@
             </div>
             <div class="form-group">
                 <label>Telefone:</label>
-                <input type="text" name="telefone" id="telefone" maxlength="15" name="telefone" id="telefone" placeholder="ddd-9999-9999" class="form-control">
+                <input onkeyup="mascara( this, mtel )" type="text" name="telefone" id="telefone" maxlength="15" name="telefone" id="telefone" placeholder="ddd-9999-9999" class="form-control">
             </div>
             <div class="form-group">
                 <label>Cep:</label>
-                <input maxlength="8" name="cep" id="cep" type="text" class="form-control">
+                <input onkeyup="mascara( this, mcep )" maxlength="9" name="cep" id="cep" type="text" class="form-control">
             </div>
             <div class="form-group">
                 <label>Nº da Casa:</label>
-                <input type="text" name="numero" id="numero" maxlength="8" class="form-control">
+                <input type="text"  name="numero" id="numero" maxlength="8" class="form-control">
             </div>
             <button type="submit" class="btn btn-large btn-default">Adicionar</button><button type="submit" onclick="window.close()" class="btn btn-large btn-default">Cancelar</button>
         </form>
     </div>
     <script type="text/javascript">
-        /* Máscaras ER */
+        
         function mascara(o,f){
             v_obj=o
             v_fun=f
@@ -54,19 +54,19 @@
             v_obj.value=v_fun(v_obj.value)
         }
         function mtel(v){
-            v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
-            v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
-            v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+            v=v.replace(/\D/g,"");                  
+            v=v.replace(/^(\d{2})(\d)/g,"($1) $2");
+            v=v.replace(/(\d)(\d{4})$/,"$1-$2");    
             return v;
+        }
+        function mcep(v){
+            v=v.replace(/\D/g,"")
+            v=v.replace(/^(\d{5})(\d)/,"$1-$2")
+            return v
         }
         function id( el ){
             return document.getElementById( el );
-        }
-        window.onload = function(){
-            id('telefone').onkeypress = function(){
-                mascara( this, mtel );
-            }
-        }
+        }     
     </script>
 </body>
 </html>

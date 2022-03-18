@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="refresh" content="180">
     <link rel='stylesheet' href='/stylesheets/photon.min.css' />
     <link rel='stylesheet' href='/stylesheets/photon.css' />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -117,26 +118,29 @@
                   <th>Nome</th>
                   <th>Preço</th>
                   <th>Quantidade</th>
+                  <th></th>
                 </tr>
+              </thead>
+              <tbody>
                 <% todos.forEach((lista)=>{  %>
                   <tr>
                     <td><%= lista.nome %></td>              
                     <td><%= lista.preco %></td>
-                    <td><%= lista.quantidade %></td>
+                    <td><%= lista.quantidade %></td>                    
+                    <td><a href="/produtos/editar/<%= lista.id %>"><button class="btn btn-mini btn-primary">Editar</button></a></td>
                   </tr>
-                <%}) %>
-              </thead>
+                <%}) %>              
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+    <meta http-equiv="refresh" content="180">
     <script>
       var novoProduto = () => {
-        window.open('/produtos/add', 'pagina', "left=400,top=150,width=320,height=450")
+        window.open('/produtos/add', 'pagina', "left=400,top=150,width=320,height=500")
       }
     </script>
-    <meta http-equiv="refresh" content="180">
   </body>
 </html>

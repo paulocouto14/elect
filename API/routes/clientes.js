@@ -33,7 +33,6 @@ router.post('/add', (req, res, next) => {
   }).then(() => {
     console.log('novo cliente cadastrado')
     res.end('<script>window.close()</script>')
-    res.redirect('/clientes')
   }).catch(() => {
     console.log('erro ao cadastra cliente:')
   })
@@ -42,7 +41,8 @@ router.post('/add', (req, res, next) => {
 
 
 
-router.get('/delete/:id', (req, res, next) => {   
+router.get('/delete/:id', (req, res, next) => { 
+  console.log(req.params.id)  
   
   Cliente.destroy({ where:{ id:req.params.id }}).then(() => {
     res.redirect('/clientes')

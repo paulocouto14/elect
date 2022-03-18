@@ -23,16 +23,15 @@ router.get('/add', (req, res, next) => {
 
 
 router.post('/add', (req, res, next) => {
-  
+    
   Produtos.create({
     nome:req.body.nome,
-    email:req.body.email,
-    telefone:req.body.telefone,
-    cep:req.body.cep,
-    numero:req.body.numero
+    preco:req.body.preco,
+    descricao:req.body.descricao,
+    quantidade:req.body.quantidade
   }).then(() => {
     console.log('novo cliente cadastrado')
-    res.redirect('/produtos')
+    res.end('<script>window.close()</script>')
   }).catch(() => {
     console.log('erro ao cadastra cliente:')
     res.redirect('menu')
@@ -40,14 +39,35 @@ router.post('/add', (req, res, next) => {
 
 })
 
-
-
-router.get('/delete/:id', (req, res, next) => {   
+router.get('/editar/:id', (req, res, next) => {
+  console.log(req.params.id)
+  Produtos.findByPk(req.params.id).then((editar) => {
+    res.render('editarProdutos', {itens:editar,title:'Alterar Item'})
+  }).catch((err) => console.log(err))
   
-  Cliente.destroy({ where: { id:req.params.id }}).then(() => {
-    res.redirect('/clientes')
-  }).catch((err) => { console.log(err) });
-
 })
+
+router.post('/editar/:id', (req, res, next) => {
+  console.log(req.body)
+  // Produtos.update(req.params.id).then((e) => {
+  //   e.nome = 'aaaaa',
+  //   e.preco = '9999',
+  //   e.descricao = 'kakakakaka',
+  //   e.quantidade = '8888'
+  //   e.save()
+  //   console.log(`Produto ${e.id} alterado com sucesso!`)
+  //   res.redirect('/produtos')
+  // }).catch((err) => console.log(err))
+})
+
+// router.put('/editar/:id', (req, res, next) => {   
+  
+//   Cliente.destroy({ where: { id:req.params.id }}).then(() => {
+//     res.redirect('/clientes')
+//   }).catch((err) => { console.log(err) });
+
+// })
+
+
 
 module.exports = router;

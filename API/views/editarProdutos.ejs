@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="refresh" content="180">
     <link rel='stylesheet' href='/stylesheets/photon.min.css' />
     <link rel='stylesheet' href='/stylesheets/photon.css' />
+    <style>
+        #formulario{
+            margin: 3%;
+        }
+        #btnform{
+            margin: 3%;
+        }
+    </style>
   </head>
   <body>    
     <div class="window">
@@ -30,9 +39,9 @@
             <span class="icon icon-home icon-text"></span>
             Filters
           </button>
-          <button onclick="novoCliente()" class="btn btn-primary pull-right js-popover-trigger">
+          <button onclick="novoProduto()" class="btn btn-primary pull-right js-popover-trigger">
             <span class="icon icon-user-add"></span>
-            Novo Cliente
+            Novo Produto
           </button>
         </div>
       </header>
@@ -45,11 +54,11 @@
                 <span class="icon icon-home"></span>
                 Menu
               </a>
-              <span class="nav-group-item active">
-                <span class="icon icon-light-up"></span>
+              <a href="/clientes" class="nav-group-item">
+                <span href="/clientes" class="icon icon-light-up"></span>
                 Clientes
-              </span>
-              <a href="/produtos" class="nav-group-item">
+              </a>
+              <a href="/produtos" class="nav-group-item active">
                 <span class="icon icon-download"></span>
                 Produtos
               </a>
@@ -111,34 +120,39 @@
           </div>
           <div class="pane">
             <table class="table-striped">
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>E-mail</th>
-                  <th>telefone</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <% todos.forEach((lista)=>{  %>
-                  <tr>
-                    <td><%= lista.nome %></td>              
-                    <td><%= lista.email %></td>
-                    <td><%= lista.telefone %></td>
-                    <td><a href="/clientes/delete/<%= lista.id %>"><button class="btn btn-mini btn-negative">Apagar</button></a></td>
-                  </tr>
-                <%}) %>
-              </tbody>
+                <div id="formulario">
+                    <form action="/produtos/editar/<%= itens.id %>" method="post">
+                        <div class="form-group">
+                            <label>Nome: <%= itens.nome %></label>
+                            <input type="text" placeholder="digite o novo nome ..." id="nome" name="nome" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Preço: <%= itens.preco %></label>
+                            <input type="text" placeholder="digite novo preço ...." maxlength="30" id="preco" name="preco" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição: <%= itens.descricao %></label>
+                            <input type="text" placeholder="digite nova descrição ..." id="desc" name="descricao" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantidade: <%= itens.quantidade %></label>
+                            <input type="text" placeholder="digite nova quantidade ..." id="quantidade" name="quantidade" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-large btn-default">Alterar</button>
+                        </div>
+                    </form>
+                </div>
             </table>
           </div>
         </div>
       </div>
     </div>
+    <meta http-equiv="refresh" content="180">
     <script>
-      var novoCliente = () => {
-        window.open('/clientes/add', 'pagina', "left=400,top=150,width=320,height=500")
+      var novoProduto = () => {
+        window.open('/produtos/add', 'pagina', "left=400,top=150,width=320,height=500")
       }
     </script>
-    <meta http-equiv="refresh" content="180">    
   </body>
 </html>

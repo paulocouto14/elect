@@ -14,30 +14,34 @@
         button{
             margin: 2%;
         }
+    
 
     </style>
 </head>
 <body>
+    <header class="toolbar toolbar-header">
+        <h1 class="title">Item: <%= itens.nome %></h1>
+    </header>
     <div id="formulario" class="form-group">
-        <form action="/produtos/add" method="post">
+        <form action="/produtos/editar/<%= itens.id %>" method="post">
             <div class="form-group">
-                <label>Nome:</label>
+                <label>Nome: <%= itens.nome %></label>
                 <input type="text" id="nome" name="nome" class="form-control">
             </div>
             <div class="form-group">
-                <label>Preço:</label>
+                <label>Preço: <%= itens.preco %></label>
                 <input type="text" maxlength="30" id="preco" name="preco" class="form-control">
             </div>
             <div class="form-group">
-                <label>Descrição:</label>
+                <label>Descrição: <%= itens.descricao %></label>
                 <input type="text" id="desc" name="descricao" class="form-control">
             </div>
             <div class="form-group">
-                <label>Quantidade:</label>
+                <label>Quantidade: <%= itens.quantidade %></label>
                 <input type="text" id="quantidade" name="quantidade" class="form-control">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-large btn-default">Adicionar</button><button onclick="window.close()" class="btn btn-large btn-default">Cancelar</button>
+                <button type="submit" class="btn btn-large btn-default">Alterar</button><a href="produtos/"><button class="btn btn-large btn-default">Voltar</button></a>
             </div>
         </form>
     </div>
