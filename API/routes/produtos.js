@@ -40,7 +40,7 @@ router.post('/add', (req, res, next) => {
 })
 
 router.get('/editar/:id', (req, res, next) => {
-  console.log(req.params.id)
+  console.log('rota get')
   Produtos.findByPk(req.params.id).then((editar) => {
     res.render('editarProdutos', {itens:editar,title:'Alterar Item'})
   }).catch((err) => console.log(err))
@@ -48,25 +48,27 @@ router.get('/editar/:id', (req, res, next) => {
 })
 
 router.post('/editar/:id', (req, res, next) => {
-  console.log(req.body)
-  // Produtos.update(req.params.id).then((e) => {
-  //   e.nome = 'aaaaa',
-  //   e.preco = '9999',
-  //   e.descricao = 'kakakakaka',
-  //   e.quantidade = '8888'
-  //   e.save()
-  //   console.log(`Produto ${e.id} alterado com sucesso!`)
-  //   res.redirect('/produtos')
-  // }).catch((err) => console.log(err))
+  console.log('rota post')  
+  Produtos.findByPk(req.params.id).then((e) => {
+    e.nome = req.body.nome,
+    e.preco = req.body.preco,
+    e.descricao = req.body.descricao,
+    e.quantidade = req.body.quantidade
+    e.save()
+    res.redirect('/produtos')
+    console.log('foi')
+  }).catch((err) => {
+    console.log('error: ' + err)
+  })
 })
 
-// router.put('/editar/:id', (req, res, next) => {   
-  
-//   Cliente.destroy({ where: { id:req.params.id }}).then(() => {
-//     res.redirect('/clientes')
-//   }).catch((err) => { console.log(err) });
+router.get('/del/:id', (req, res, next) => { 
+  console.log(req.params.id)
+  Produtos.destroy({ where: { id:req.params.id }}).then(() => {
+    res.redirect('/produtos')
+  }).catch((err) => { console.log(err) });
 
-// })
+})
 
 
 

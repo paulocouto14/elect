@@ -6,10 +6,10 @@
     <link rel='stylesheet' href='/stylesheets/photon.css' />
     <style>
         #formulario{
-            margin: 3%;
+          margin: 3%;
         }
         #btnform{
-            margin: 3%;
+          margin: 3%;
         }
     </style>
   </head>
@@ -123,25 +123,26 @@
                 <div id="formulario">
                     <form action="/produtos/editar/<%= itens.id %>" method="post">
                         <div class="form-group">
-                            <label>Nome: <%= itens.nome %></label>
-                            <input type="text" placeholder="digite o novo nome ..." id="nome" name="nome" class="form-control">
+                          <label>Nome: <%= itens.nome %></label>
+                          <input type="text" placeholder="digite o novo nome ..." id="nome" name="nome" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Preço: <%= itens.preco %></label>
-                            <input type="text" placeholder="digite novo preço ...." maxlength="30" id="preco" name="preco" class="form-control">
+                          <label>Preço: <%= itens.preco %></label>
+                          <input type="text" placeholder="digite novo preço ...." maxlength="30" id="preco" name="preco" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Descrição: <%= itens.descricao %></label>
-                            <input type="text" placeholder="digite nova descrição ..." id="desc" name="descricao" class="form-control">
+                          <label>Descrição: <%= itens.descricao %></label>
+                          <input type="text" placeholder="digite nova descrição ..." id="desc" name="descricao" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Quantidade: <%= itens.quantidade %></label>
-                            <input type="text" placeholder="digite nova quantidade ..." id="quantidade" name="quantidade" class="form-control">
+                          <label>Quantidade: <%= itens.quantidade %></label>
+                          <input type="text" placeholder="digite nova quantidade ..." id="quantidade" name="quantidade" class="form-control">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-large btn-default">Alterar</button>
+                          <button id="btnVoltar" class="btn btn-large btn-default pull-right js-popover-trigger">Voltar</button>
+                          <button type="submit" class="btn btn-large btn-default">Alterar</button>
                         </div>
-                    </form>
+                    </form>                    
                 </div>
             </table>
           </div>
@@ -153,6 +154,12 @@
       var novoProduto = () => {
         window.open('/produtos/add', 'pagina', "left=400,top=150,width=320,height=500")
       }
+      var btn = document.getElementById('btnVoltar')
+      var botaoVoltar = (event) => {
+        event.preventDefault()
+        window.location.href = '/produtos'
+      }
+      btn.addEventListener('click', botaoVoltar)
     </script>
   </body>
 </html>

@@ -28,13 +28,13 @@ module.exports = function(passport){
     passwordField: 'senha'
     },
     (username, password, done) => {
-        users.findOne({where:{mail:username}}).then((usuario) => {
+        users.findOne({where:{email:username}}).then((usuario) => {
             console.log('carregando ...')
             if(!usuario) {
                 console.log('usuario errado')
                 return done(null, false)
             }
-            let compare = bcrypt.compareSync(password, usuario.pass)
+            let compare = bcrypt.compareSync(password, usuario.senha)
             if(!compare) {
                 console.log("senha errada")
                 return done(null, false)

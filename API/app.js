@@ -12,6 +12,8 @@ var indexRouter = require('./routes/index');
 var clientesRouter = require('./routes/clientes');
 var menuRouter = require('./routes/menu');
 var produtosRouter = require('./routes/produtos');
+var orcamentoRouter = require('./routes/orcamento');
+var usuarioRouter = require('./routes/usuarios');
 
 
 authenticationMiddleware = (req, res, next) => {
@@ -42,9 +44,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
-app.use('/clientes', clientesRouter);
-app.use('/menu', menuRouter);
-app.use('/produtos', produtosRouter);
+app.use('/clientes', authenticationMiddleware, clientesRouter);
+app.use('/menu', authenticationMiddleware, menuRouter);
+app.use('/produtos', authenticationMiddleware,produtosRouter);
+app.use('/orcamento', authenticationMiddleware,orcamentoRouter);
+app.use('/user', authenticationMiddleware,usuarioRouter);
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

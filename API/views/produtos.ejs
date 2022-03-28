@@ -59,10 +59,10 @@
                 <span class="icon icon-folder"></span>
                 Pedidos
               </span>
-              <span class="nav-group-item">
+              <a href="/orcamento" class="nav-group-item">
                 <span class="icon icon-window"></span>
                 Orçamento
-              </span>
+              </a>
               <span class="nav-group-item">
                 <span class="icon icon-signal"></span>
                 Caixa
@@ -119,6 +119,7 @@
                   <th>Preço</th>
                   <th>Quantidade</th>
                   <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -126,8 +127,9 @@
                   <tr>
                     <td><%= lista.nome %></td>              
                     <td><%= lista.preco %></td>
-                    <td><%= lista.quantidade %></td>                    
-                    <td><a href="/produtos/editar/<%= lista.id %>"><button class="btn btn-mini btn-primary">Editar</button></a></td>
+                    <td><%= lista.quantidade %></td>                                       
+                    <td><a href="/produtos/editar/<%= lista.id %>"><button class="btn btn-mini btn-primary pull-right js-popover-trigger">Editar</button></a></td>
+                    <td><a href="/produtos/del/<%= lista.id %>"><button class="btn btn-mini btn-negative pull-right js-popover-trigger">Apagar</button></a></td>
                   </tr>
                 <%}) %>              
               </tbody>
