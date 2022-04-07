@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="180">
     <link rel='stylesheet' href='/stylesheets/photon.min.css' />
     <link rel='stylesheet' href='/stylesheets/photon.css' />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>    
     <div class="window">
@@ -32,9 +30,9 @@
             <span class="icon icon-home icon-text"></span>
             Filters
           </button>
-          <button onclick="novoProduto()" class="btn btn-primary pull-right js-popover-trigger">
+          <button onclick="novoCliente()" class="btn btn-primary pull-right js-popover-trigger">
             <span class="icon icon-user-add"></span>
-            Novo Produto
+            Novo Usuario
           </button>
         </div>
       </header>
@@ -51,7 +49,7 @@
                 <span href="/clientes" class="icon icon-light-up"></span>
                 Clientes
               </a>
-              <a href="/produtos" class="nav-group-item active">
+              <a href="/produtos" class="nav-group-item">
                 <span class="icon icon-download"></span>
                 Produtos
               </a>
@@ -63,7 +61,7 @@
                 <span class="icon icon-window"></span>
                 Orçamento
               </a>
-              <a href="/usuarios" class="nav-group-item">
+              <a href="/usuarios" class="nav-group-item active">
                 <span class="icon icon-signal"></span>
                 Usuarios
               </a>
@@ -116,9 +114,8 @@
               <thead>
                 <tr>
                   <th>Nome</th>
-                  <th>Preço</th>
-                  <th>Quantidade</th>
-                  <th></th>
+                  <th>E-mail</th>
+                  <th>telefone</th>
                   <th></th>
                 </tr>
               </thead>
@@ -126,23 +123,22 @@
                 <% todos.forEach((lista)=>{  %>
                   <tr>
                     <td><%= lista.nome %></td>              
-                    <td><%= lista.preco %></td>
-                    <td><%= lista.quantidade %></td>                                       
-                    <td><a href="/produtos/editar/<%= lista.id %>"><button class="btn btn-mini btn-primary pull-right js-popover-trigger">Editar</button></a></td>
-                    <td><a href="/produtos/del/<%= lista.id %>"><button class="btn btn-mini btn-negative pull-right js-popover-trigger">Apagar</button></a></td>
+                    <td><%= lista.email %></td>
+                    <td><%= lista.telefone %></td>
+                    <td><a href="/clientes/delete/<%= lista.id %>"><button onclick="event.defaultPrevented()" class="btn btn-mini btn-negative">Apagar</button></a></td>
                   </tr>
-                <%}) %>              
+                <%}) %>
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
-    <meta http-equiv="refresh" content="180">
     <script>
-      var novoProduto = () => {
-        window.open('/produtos/add', 'pagina', "left=400,top=150,width=320,height=500")
+      var novoCliente = () => {
+        window.open('/usuarios/add', 'pagina', "left=400,top=150,width=320,height=500")
       }
     </script>
+    <meta http-equiv="refresh" content="180">    
   </body>
 </html>

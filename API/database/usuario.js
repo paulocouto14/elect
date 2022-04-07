@@ -5,6 +5,7 @@ const usuario = db.sequelize.define('usuarios_new', {
     id: {
         type: db.Sequelize.INTEGER,
         autoIncrement: true,
+        allowNull:false,
         primaryKey: true
     },
     nome:{
@@ -20,7 +21,7 @@ const usuario = db.sequelize.define('usuarios_new', {
         allowNull: false
     },
     telefone:{
-        type: db.Sequelize.INTEGER,
+        type: db.Sequelize.STRING,
         allowNull: false
     }
 });
@@ -29,3 +30,4 @@ module.exports = usuario;
 
 
 // usuario.sync({ force: true })
+ 

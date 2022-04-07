@@ -46,9 +46,9 @@ app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/clientes', authenticationMiddleware, clientesRouter);
 app.use('/menu', authenticationMiddleware, menuRouter);
-app.use('/produtos', authenticationMiddleware,produtosRouter);
-app.use('/orcamento', authenticationMiddleware,orcamentoRouter);
-app.use('/user', authenticationMiddleware,usuarioRouter);
+app.use('/produtos', authenticationMiddleware, produtosRouter);
+app.use('/orcamento', authenticationMiddleware, orcamentoRouter);
+app.use('/usuarios', authenticationMiddleware, usuarioRouter);
 
 
 // catch 404 and forward to error handler

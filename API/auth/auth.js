@@ -15,12 +15,11 @@ module.exports = function(passport){
        
  
     passport.deserializeUser((id, done) => {
-        try {
-            const user = users.findOne({where:{id:id}});
-            done(null, user);
-        } catch (err) {
-            done(err, null);
-        }
+        users.findOne({where:{id:id}}).then((user) => {
+            done(null, user)
+        }).catch((err) => {
+            done(err, null)
+        });
     });
 
     passport.use(new LocalStrategy({

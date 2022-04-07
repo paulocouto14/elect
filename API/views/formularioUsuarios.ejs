@@ -19,26 +19,22 @@
 </head>
 <body>
     <div id="formulario" class="form-group">
-        <form action="/clientes/add" method="post">
+        <form action="/usuarios/add" method="post">
             <div class="form-group">
                 <label>Nome:</label>
                 <input type="text" required name="nome" id="nome" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="text" required name="email" id="email" class="form-control">
             </div>
             <div class="form-group">
                 <label>Telefone:</label>
                 <input onkeyup="mascara( this, mtel )" required type="text" name="telefone" id="telefone" maxlength="15" name="telefone" id="telefone" placeholder="ddd-9999-9999" class="form-control">
             </div>
             <div class="form-group">
-                <label>Cep:</label>
-                <input onkeyup="mascara( this, mcep )" required maxlength="9" name="cep" id="cep" type="text" class="form-control">
+                <label>Email:</label>
+                <input type="text" required name="email" id="email" class="form-control">
             </div>
             <div class="form-group">
-                <label>Nº da Casa:</label>
-                <input type="text" required  name="numero" id="numero" maxlength="8" class="form-control">
+                <label>Senha:</label>
+                <input type="password" required name="senha" id="senha" placeholder="Digite sua senha" class="form-control">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-large btn-default">Adicionar</button><button onclick="window.close()" class="btn btn-large btn-default">Cancelar</button>
